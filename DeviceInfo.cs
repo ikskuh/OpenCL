@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace OpenCL
+{
+	public enum DeviceInfo : uint
+	{
+		Type = 0x1000,
+		VendorId = 0x1001,
+		MaxComputeUnits = 0x1002,
+		MaxWorkItemDimensions = 0x1003,
+		MaxWorkGroupSize = 0x1004,
+		MaxWorkItemSizes = 0x1005,
+		PreferredVectorWidthChar = 0x1006,
+		PreferredVectorWidthShort = 0x1007,
+		PreferredVectorWidthInt = 0x1008,
+		PreferredVectorWidthLong = 0x1009,
+		PreferredVectorWidthFloat = 0x100A,
+		PreferredVectorWidthDouble = 0x100B,
+		MaxClockFrequency = 0x100C,
+		AddressBits = 0x100D,
+		MaxReadImageArgs = 0x100E,
+		MaxWriteImageArgs = 0x100F,
+		MaxMemAllocSize = 0x1010,
+		Image2dMaxWidth = 0x1011,
+		Image2dMaxHeight = 0x1012,
+		Image3dMaxWidth = 0x1013,
+		Image3dMaxHeight = 0x1014,
+		Image3dMaxDepth = 0x1015,
+		ImageSupport = 0x1016,
+		MaxParameterSize = 0x1017,
+		MaxSamplers = 0x1018,
+		MemBaseAddrAlign = 0x1019,
+		MinDataTypeAlignSize = 0x101A,
+		SingleFpConfig = 0x101B,
+		GlobalMemCacheType = 0x101C,
+		GlobalMemCachelineSize = 0x101D,
+		GlobalMemCacheSize = 0x101E,
+		GlobalMemSize = 0x101F,
+		MaxConstantBufferSize = 0x1020,
+		MaxConstantArgs = 0x1021,
+		LocalMemType = 0x1022,
+		LocalMemSize = 0x1023,
+		ErrorCorrectionSupport = 0x1024,
+		ProfilingTimerResolution = 0x1025,
+		EndianLittle = 0x1026,
+		Available = 0x1027,
+		CompilerAvailable = 0x1028,
+		ExecutionCapabilities = 0x1029,
+		QueueProperties = 0x102A,
+		Name = 0x102B,
+		Vendor = 0x102C,
+		ClDriverVersion = 0x102D,
+		Profile = 0x102E,
+		Version = 0x102F,
+		Extensions = 0x1030,
+		Platform = 0x1031,
+	}
+}
