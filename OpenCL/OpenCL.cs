@@ -9,7 +9,7 @@ namespace OpenCL
 {
 	internal static class OpenCLNative
 	{
-		public const string Library = "opencl.dll";
+		public const string Library = "OpenCL.dll";
 		internal static class NativeMethods
 		{
 			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
