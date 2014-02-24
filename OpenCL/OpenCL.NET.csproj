@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BuildStatus.cs" />
-    <Compile Include="Byte4.cs" />
+    <Compile Include="VectorTypes.cs" />
     <Compile Include="CLError.cs" />
     <Compile Include="CLEvent.cs" />
     <Compile Include="CommandQueue.cs" />
@@ -58,6 +58,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="ProgramBuildInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

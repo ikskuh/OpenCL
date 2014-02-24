@@ -342,33 +342,130 @@ namespace OpenCL
 				uint arg_size,
 				void* arg_value);
 
-			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-			public static extern int clSetKernelArg(
-				Kernel kernel,
-				uint arg_index,
-				uint arg_size,
-				ref byte arg_value);
+			#region Auto Generated Code
 
 			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-			public static extern int clSetKernelArg(
-				Kernel kernel,
-				uint arg_index,
-				uint arg_size,
-				ref int arg_value);
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref byte arg_value);
 
 			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-			public static extern int clSetKernelArg(
-				Kernel kernel,
-				uint arg_index,
-				uint arg_size,
-				ref uint arg_value);
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref byte2 arg_value);
 
 			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-			public static extern int clSetKernelArg(
-				Kernel kernel,
-				uint arg_index,
-				uint arg_size,
-				ref float arg_value);
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref byte3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref byte4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref sbyte arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref sbyte2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref sbyte3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref sbyte4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref short arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref short2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref short3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref short4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ushort arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ushort2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ushort3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ushort4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref int arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref int2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref int3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref int4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref uint arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref uint2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref uint3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref uint4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref long arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref long2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref long3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref long4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ulong arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ulong2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ulong3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref ulong4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref float arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref float2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref float3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref float4 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref double arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref double2 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref double3 arg_value);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref double4 arg_value);
+
+			#endregion
+
 
 			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
 			public static extern int clSetKernelArg(
