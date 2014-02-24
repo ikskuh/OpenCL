@@ -235,6 +235,20 @@ namespace OpenCL
 				out CLEvent cl_event);
 
 			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clEnqueueReadImage(
+				CommandQueue command_queue,
+				Memory image,
+				bool blocking_read,
+				[In] [MarshalAs(UnmanagedType.LPArray)] int[] origin,
+				[In] [MarshalAs(UnmanagedType.LPArray)] int[] region,
+				uint row_pitch,
+				uint slice_pitch,
+				IntPtr ptr,
+				uint num_events_in_wait_list,
+				[In] [MarshalAs(UnmanagedType.LPArray)] CLEvent[] event_wait_list,
+				out CLEvent cl_event);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
 			public static extern unsafe int clEnqueueWriteImage(
 				CommandQueue command_queue,
 				Memory image,
@@ -373,6 +387,18 @@ namespace OpenCL
 				[In] [MarshalAs(UnmanagedType.LPArray)] uint[] global_work_offset,
 				[In] [MarshalAs(UnmanagedType.LPArray)] uint[] global_work_size,
 				[In] [MarshalAs(UnmanagedType.LPArray)] uint[] local_work_size,
+				uint num_events_in_wait_list,
+				[In] [MarshalAs(UnmanagedType.LPArray)] CLEvent[] event_wait_list,
+				out CLEvent ev);
+
+			[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+			public static extern int clEnqueueNDRangeKernel(
+				CommandQueue command_queue,
+				Kernel kernel,
+				uint work_dim,
+				[In] [MarshalAs(UnmanagedType.LPArray)] int[] global_work_offset,
+				[In] [MarshalAs(UnmanagedType.LPArray)] int[] global_work_size,
+				[In] [MarshalAs(UnmanagedType.LPArray)] int[] local_work_size,
 				uint num_events_in_wait_list,
 				[In] [MarshalAs(UnmanagedType.LPArray)] CLEvent[] event_wait_list,
 				out CLEvent ev);

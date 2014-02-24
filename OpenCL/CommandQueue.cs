@@ -38,6 +38,22 @@ namespace OpenCL
 			return ev;
 		}
 
+		public CLEvent EnqueueNDRangeKernel(Kernel kernel, int workdim, int[] workOffset, int[] globalWorkSize, int[] localWorkSize, params CLEvent[] wait_event_list)
+		{
+			CLEvent ev;
+			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueNDRangeKernel(
+				this,
+				kernel,
+				(uint)workdim,
+				workOffset,
+				globalWorkSize,
+				localWorkSize,
+				(uint)wait_event_list.Length,
+				wait_event_list.Length > 0 ? wait_event_list : null,
+				out ev));
+			return ev;
+		}
+
 		public CLEvent EnqueueReadBuffer(Memory memory, bool blocking, int offset, IntPtr data, int size, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
@@ -209,6 +225,25 @@ namespace OpenCL
 		}
 
 		public CLEvent EnqueueReadImage(Memory image, bool blocking, uint[] origin, uint[] region, int row_pitch, int slice_pitch, IntPtr ptr, params CLEvent[] wait_event_list)
+		{
+			CLEvent ev;
+			int error = OpenCLNative.NativeMethods.clEnqueueReadImage(
+				this,
+				image,
+				blocking,
+				origin,
+				region,
+				(uint)row_pitch,
+				(uint)slice_pitch,
+				ptr,
+				(uint)wait_event_list.Length,
+				wait_event_list.Length > 0 ? wait_event_list : null,
+				out ev);
+			OpenCLNative.ThrowError(error);
+			return ev;
+		}
+
+		public CLEvent EnqueueReadImage(Memory image, bool blocking, int[] origin, int[] region, int row_pitch, int slice_pitch, IntPtr ptr, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
 			int error = OpenCLNative.NativeMethods.clEnqueueReadImage(

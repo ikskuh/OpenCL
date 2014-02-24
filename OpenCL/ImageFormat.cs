@@ -9,6 +9,12 @@ namespace OpenCL
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ImageFormat
 	{
+		public ImageFormat(ChannelOrder order, ChannelType type)
+		{
+			this.ChannelOrder = order;
+			this.ChannelType = type;
+		}
+
 		[FieldOffset(0)]
 		public ChannelOrder ChannelOrder;
 
