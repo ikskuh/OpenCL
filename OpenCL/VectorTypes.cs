@@ -2755,7 +2755,7 @@ namespace OpenCL
 			val.Normalize();
 			return val;
 		}
-		public float Distance(float2 a, float2 b)
+		public static float Distance(float2 a, float2 b)
 		{
 			return (a - b).Length;
 		}
@@ -2887,7 +2887,7 @@ namespace OpenCL
 			val.Normalize();
 			return val;
 		}
-		public float Distance(float3 a, float3 b)
+		public static float Distance(float3 a, float3 b)
 		{
 			return (a - b).Length;
 		}
@@ -3026,7 +3026,7 @@ namespace OpenCL
 			val.Normalize();
 			return val;
 		}
-		public float Distance(float4 a, float4 b)
+		public static float Distance(float4 a, float4 b)
 		{
 			return (a - b).Length;
 		}
@@ -3145,7 +3145,7 @@ namespace OpenCL
 			val.Normalize();
 			return val;
 		}
-		public double Distance(double2 a, double2 b)
+		public static double Distance(double2 a, double2 b)
 		{
 			return (a - b).Length;
 		}
@@ -3277,7 +3277,7 @@ namespace OpenCL
 			val.Normalize();
 			return val;
 		}
-		public double Distance(double3 a, double3 b)
+		public static double Distance(double3 a, double3 b)
 		{
 			return (a - b).Length;
 		}
@@ -3416,7 +3416,7 @@ namespace OpenCL
 			val.Normalize();
 			return val;
 		}
-		public double Distance(double4 a, double4 b)
+		public static double Distance(double4 a, double4 b)
 		{
 			return (a - b).Length;
 		}
