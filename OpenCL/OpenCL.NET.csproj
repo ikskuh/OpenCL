@@ -46,7 +46,6 @@
     <Compile Include="Device.cs" />
     <Compile Include="DeviceInfo.cs" />
     <Compile Include="DeviceType.cs" />
-    <Compile Include="Float3.cs" />
     <Compile Include="ImageFormat.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="Memory.cs" />

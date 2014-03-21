@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using System.Runtime.InteropServices;
-using System.Text;
-
-
 namespace OpenCL
 {
 	[StructLayout(LayoutKind.Explicit)]
 	public struct byte2 : IEquatable<byte2>
 	{
+		public static byte2 Zero { get { return new byte2(0, 0); } }
+		public static byte2 One { get { return new byte2(1, 1); } }
+		public static byte2 UnitX { get { return new byte2(1, 0); } }
+		public static byte2 UnitY { get { return new byte2(0, 1); } }
+
 		[FieldOffset(0)]
 		public byte X;
 		[FieldOffset(1)]
@@ -66,6 +66,11 @@ namespace OpenCL
 		{
 			return byte2.Divide(left, right);
 		}
+
+		public static implicit operator byte2(byte value)
+		{
+			return new byte2(value, value);
+		}
 		private int GetInt(byte v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -75,7 +80,7 @@ namespace OpenCL
 		{
 			if (!(obj is byte2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((byte2)obj);
 		}
 		public bool Equals(byte2 other)
 		{
@@ -95,10 +100,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct byte3 : IEquatable<byte3>
 	{
+		public static byte3 Zero { get { return new byte3(0, 0, 0); } }
+		public static byte3 One { get { return new byte3(1, 1, 1); } }
+		public static byte3 UnitX { get { return new byte3(1, 0, 0); } }
+		public static byte3 UnitY { get { return new byte3(0, 1, 0); } }
+		public static byte3 UnitZ { get { return new byte3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public byte X;
 		[FieldOffset(1)]
@@ -165,6 +177,11 @@ namespace OpenCL
 		{
 			return byte3.Divide(left, right);
 		}
+
+		public static implicit operator byte3(byte value)
+		{
+			return new byte3(value, value, value);
+		}
 		private int GetInt(byte v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -174,7 +191,7 @@ namespace OpenCL
 		{
 			if (!(obj is byte3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((byte3)obj);
 		}
 		public bool Equals(byte3 other)
 		{
@@ -195,10 +212,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct byte4 : IEquatable<byte4>
 	{
+		public static byte4 Zero { get { return new byte4(0, 0, 0, 0); } }
+		public static byte4 One { get { return new byte4(1, 1, 1, 1); } }
+		public static byte4 UnitX { get { return new byte4(1, 0, 0, 0); } }
+		public static byte4 UnitY { get { return new byte4(0, 1, 0, 0); } }
+		public static byte4 UnitZ { get { return new byte4(0, 0, 1, 0); } }
+		public static byte4 UnitW { get { return new byte4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public byte X;
 		[FieldOffset(1)]
@@ -269,6 +294,11 @@ namespace OpenCL
 		{
 			return byte4.Divide(left, right);
 		}
+
+		public static implicit operator byte4(byte value)
+		{
+			return new byte4(value, value, value, value);
+		}
 		private int GetInt(byte v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -278,7 +308,7 @@ namespace OpenCL
 		{
 			if (!(obj is byte4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((byte4)obj);
 		}
 		public bool Equals(byte4 other)
 		{
@@ -300,10 +330,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct sbyte2 : IEquatable<sbyte2>
 	{
+		public static sbyte2 Zero { get { return new sbyte2(0, 0); } }
+		public static sbyte2 One { get { return new sbyte2(1, 1); } }
+		public static sbyte2 UnitX { get { return new sbyte2(1, 0); } }
+		public static sbyte2 UnitY { get { return new sbyte2(0, 1); } }
+
 		[FieldOffset(0)]
 		public sbyte X;
 		[FieldOffset(1)]
@@ -360,6 +396,11 @@ namespace OpenCL
 		{
 			return sbyte2.Divide(left, right);
 		}
+
+		public static implicit operator sbyte2(sbyte value)
+		{
+			return new sbyte2(value, value);
+		}
 		private int GetInt(sbyte v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -369,7 +410,7 @@ namespace OpenCL
 		{
 			if (!(obj is sbyte2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((sbyte2)obj);
 		}
 		public bool Equals(sbyte2 other)
 		{
@@ -389,10 +430,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct sbyte3 : IEquatable<sbyte3>
 	{
+		public static sbyte3 Zero { get { return new sbyte3(0, 0, 0); } }
+		public static sbyte3 One { get { return new sbyte3(1, 1, 1); } }
+		public static sbyte3 UnitX { get { return new sbyte3(1, 0, 0); } }
+		public static sbyte3 UnitY { get { return new sbyte3(0, 1, 0); } }
+		public static sbyte3 UnitZ { get { return new sbyte3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public sbyte X;
 		[FieldOffset(1)]
@@ -459,6 +507,11 @@ namespace OpenCL
 		{
 			return sbyte3.Divide(left, right);
 		}
+
+		public static implicit operator sbyte3(sbyte value)
+		{
+			return new sbyte3(value, value, value);
+		}
 		private int GetInt(sbyte v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -468,7 +521,7 @@ namespace OpenCL
 		{
 			if (!(obj is sbyte3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((sbyte3)obj);
 		}
 		public bool Equals(sbyte3 other)
 		{
@@ -489,10 +542,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct sbyte4 : IEquatable<sbyte4>
 	{
+		public static sbyte4 Zero { get { return new sbyte4(0, 0, 0, 0); } }
+		public static sbyte4 One { get { return new sbyte4(1, 1, 1, 1); } }
+		public static sbyte4 UnitX { get { return new sbyte4(1, 0, 0, 0); } }
+		public static sbyte4 UnitY { get { return new sbyte4(0, 1, 0, 0); } }
+		public static sbyte4 UnitZ { get { return new sbyte4(0, 0, 1, 0); } }
+		public static sbyte4 UnitW { get { return new sbyte4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public sbyte X;
 		[FieldOffset(1)]
@@ -563,6 +624,11 @@ namespace OpenCL
 		{
 			return sbyte4.Divide(left, right);
 		}
+
+		public static implicit operator sbyte4(sbyte value)
+		{
+			return new sbyte4(value, value, value, value);
+		}
 		private int GetInt(sbyte v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -572,7 +638,7 @@ namespace OpenCL
 		{
 			if (!(obj is sbyte4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((sbyte4)obj);
 		}
 		public bool Equals(sbyte4 other)
 		{
@@ -594,10 +660,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct short2 : IEquatable<short2>
 	{
+		public static short2 Zero { get { return new short2(0, 0); } }
+		public static short2 One { get { return new short2(1, 1); } }
+		public static short2 UnitX { get { return new short2(1, 0); } }
+		public static short2 UnitY { get { return new short2(0, 1); } }
+
 		[FieldOffset(0)]
 		public short X;
 		[FieldOffset(2)]
@@ -654,6 +726,11 @@ namespace OpenCL
 		{
 			return short2.Divide(left, right);
 		}
+
+		public static implicit operator short2(short value)
+		{
+			return new short2(value, value);
+		}
 		private int GetInt(short v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -663,7 +740,7 @@ namespace OpenCL
 		{
 			if (!(obj is short2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((short2)obj);
 		}
 		public bool Equals(short2 other)
 		{
@@ -683,10 +760,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct short3 : IEquatable<short3>
 	{
+		public static short3 Zero { get { return new short3(0, 0, 0); } }
+		public static short3 One { get { return new short3(1, 1, 1); } }
+		public static short3 UnitX { get { return new short3(1, 0, 0); } }
+		public static short3 UnitY { get { return new short3(0, 1, 0); } }
+		public static short3 UnitZ { get { return new short3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public short X;
 		[FieldOffset(2)]
@@ -753,6 +837,11 @@ namespace OpenCL
 		{
 			return short3.Divide(left, right);
 		}
+
+		public static implicit operator short3(short value)
+		{
+			return new short3(value, value, value);
+		}
 		private int GetInt(short v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -762,7 +851,7 @@ namespace OpenCL
 		{
 			if (!(obj is short3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((short3)obj);
 		}
 		public bool Equals(short3 other)
 		{
@@ -783,10 +872,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct short4 : IEquatable<short4>
 	{
+		public static short4 Zero { get { return new short4(0, 0, 0, 0); } }
+		public static short4 One { get { return new short4(1, 1, 1, 1); } }
+		public static short4 UnitX { get { return new short4(1, 0, 0, 0); } }
+		public static short4 UnitY { get { return new short4(0, 1, 0, 0); } }
+		public static short4 UnitZ { get { return new short4(0, 0, 1, 0); } }
+		public static short4 UnitW { get { return new short4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public short X;
 		[FieldOffset(2)]
@@ -857,6 +954,11 @@ namespace OpenCL
 		{
 			return short4.Divide(left, right);
 		}
+
+		public static implicit operator short4(short value)
+		{
+			return new short4(value, value, value, value);
+		}
 		private int GetInt(short v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -866,7 +968,7 @@ namespace OpenCL
 		{
 			if (!(obj is short4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((short4)obj);
 		}
 		public bool Equals(short4 other)
 		{
@@ -888,10 +990,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ushort2 : IEquatable<ushort2>
 	{
+		public static ushort2 Zero { get { return new ushort2(0, 0); } }
+		public static ushort2 One { get { return new ushort2(1, 1); } }
+		public static ushort2 UnitX { get { return new ushort2(1, 0); } }
+		public static ushort2 UnitY { get { return new ushort2(0, 1); } }
+
 		[FieldOffset(0)]
 		public ushort X;
 		[FieldOffset(2)]
@@ -948,6 +1056,11 @@ namespace OpenCL
 		{
 			return ushort2.Divide(left, right);
 		}
+
+		public static implicit operator ushort2(ushort value)
+		{
+			return new ushort2(value, value);
+		}
 		private int GetInt(ushort v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -957,7 +1070,7 @@ namespace OpenCL
 		{
 			if (!(obj is ushort2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((ushort2)obj);
 		}
 		public bool Equals(ushort2 other)
 		{
@@ -977,10 +1090,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ushort3 : IEquatable<ushort3>
 	{
+		public static ushort3 Zero { get { return new ushort3(0, 0, 0); } }
+		public static ushort3 One { get { return new ushort3(1, 1, 1); } }
+		public static ushort3 UnitX { get { return new ushort3(1, 0, 0); } }
+		public static ushort3 UnitY { get { return new ushort3(0, 1, 0); } }
+		public static ushort3 UnitZ { get { return new ushort3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public ushort X;
 		[FieldOffset(2)]
@@ -1047,6 +1167,11 @@ namespace OpenCL
 		{
 			return ushort3.Divide(left, right);
 		}
+
+		public static implicit operator ushort3(ushort value)
+		{
+			return new ushort3(value, value, value);
+		}
 		private int GetInt(ushort v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1056,7 +1181,7 @@ namespace OpenCL
 		{
 			if (!(obj is ushort3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((ushort3)obj);
 		}
 		public bool Equals(ushort3 other)
 		{
@@ -1077,10 +1202,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ushort4 : IEquatable<ushort4>
 	{
+		public static ushort4 Zero { get { return new ushort4(0, 0, 0, 0); } }
+		public static ushort4 One { get { return new ushort4(1, 1, 1, 1); } }
+		public static ushort4 UnitX { get { return new ushort4(1, 0, 0, 0); } }
+		public static ushort4 UnitY { get { return new ushort4(0, 1, 0, 0); } }
+		public static ushort4 UnitZ { get { return new ushort4(0, 0, 1, 0); } }
+		public static ushort4 UnitW { get { return new ushort4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public ushort X;
 		[FieldOffset(2)]
@@ -1151,6 +1284,11 @@ namespace OpenCL
 		{
 			return ushort4.Divide(left, right);
 		}
+
+		public static implicit operator ushort4(ushort value)
+		{
+			return new ushort4(value, value, value, value);
+		}
 		private int GetInt(ushort v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1160,7 +1298,7 @@ namespace OpenCL
 		{
 			if (!(obj is ushort4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((ushort4)obj);
 		}
 		public bool Equals(ushort4 other)
 		{
@@ -1182,10 +1320,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct int2 : IEquatable<int2>
 	{
+		public static int2 Zero { get { return new int2(0, 0); } }
+		public static int2 One { get { return new int2(1, 1); } }
+		public static int2 UnitX { get { return new int2(1, 0); } }
+		public static int2 UnitY { get { return new int2(0, 1); } }
+
 		[FieldOffset(0)]
 		public int X;
 		[FieldOffset(4)]
@@ -1242,6 +1386,11 @@ namespace OpenCL
 		{
 			return int2.Divide(left, right);
 		}
+
+		public static implicit operator int2(int value)
+		{
+			return new int2(value, value);
+		}
 		private int GetInt(int v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1251,7 +1400,7 @@ namespace OpenCL
 		{
 			if (!(obj is int2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((int2)obj);
 		}
 		public bool Equals(int2 other)
 		{
@@ -1271,10 +1420,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct int3 : IEquatable<int3>
 	{
+		public static int3 Zero { get { return new int3(0, 0, 0); } }
+		public static int3 One { get { return new int3(1, 1, 1); } }
+		public static int3 UnitX { get { return new int3(1, 0, 0); } }
+		public static int3 UnitY { get { return new int3(0, 1, 0); } }
+		public static int3 UnitZ { get { return new int3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public int X;
 		[FieldOffset(4)]
@@ -1341,6 +1497,11 @@ namespace OpenCL
 		{
 			return int3.Divide(left, right);
 		}
+
+		public static implicit operator int3(int value)
+		{
+			return new int3(value, value, value);
+		}
 		private int GetInt(int v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1350,7 +1511,7 @@ namespace OpenCL
 		{
 			if (!(obj is int3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((int3)obj);
 		}
 		public bool Equals(int3 other)
 		{
@@ -1371,10 +1532,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct int4 : IEquatable<int4>
 	{
+		public static int4 Zero { get { return new int4(0, 0, 0, 0); } }
+		public static int4 One { get { return new int4(1, 1, 1, 1); } }
+		public static int4 UnitX { get { return new int4(1, 0, 0, 0); } }
+		public static int4 UnitY { get { return new int4(0, 1, 0, 0); } }
+		public static int4 UnitZ { get { return new int4(0, 0, 1, 0); } }
+		public static int4 UnitW { get { return new int4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public int X;
 		[FieldOffset(4)]
@@ -1445,6 +1614,11 @@ namespace OpenCL
 		{
 			return int4.Divide(left, right);
 		}
+
+		public static implicit operator int4(int value)
+		{
+			return new int4(value, value, value, value);
+		}
 		private int GetInt(int v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1454,7 +1628,7 @@ namespace OpenCL
 		{
 			if (!(obj is int4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((int4)obj);
 		}
 		public bool Equals(int4 other)
 		{
@@ -1476,10 +1650,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct uint2 : IEquatable<uint2>
 	{
+		public static uint2 Zero { get { return new uint2(0, 0); } }
+		public static uint2 One { get { return new uint2(1, 1); } }
+		public static uint2 UnitX { get { return new uint2(1, 0); } }
+		public static uint2 UnitY { get { return new uint2(0, 1); } }
+
 		[FieldOffset(0)]
 		public uint X;
 		[FieldOffset(4)]
@@ -1536,6 +1716,11 @@ namespace OpenCL
 		{
 			return uint2.Divide(left, right);
 		}
+
+		public static implicit operator uint2(uint value)
+		{
+			return new uint2(value, value);
+		}
 		private int GetInt(uint v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1545,7 +1730,7 @@ namespace OpenCL
 		{
 			if (!(obj is uint2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((uint2)obj);
 		}
 		public bool Equals(uint2 other)
 		{
@@ -1565,10 +1750,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct uint3 : IEquatable<uint3>
 	{
+		public static uint3 Zero { get { return new uint3(0, 0, 0); } }
+		public static uint3 One { get { return new uint3(1, 1, 1); } }
+		public static uint3 UnitX { get { return new uint3(1, 0, 0); } }
+		public static uint3 UnitY { get { return new uint3(0, 1, 0); } }
+		public static uint3 UnitZ { get { return new uint3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public uint X;
 		[FieldOffset(4)]
@@ -1635,6 +1827,11 @@ namespace OpenCL
 		{
 			return uint3.Divide(left, right);
 		}
+
+		public static implicit operator uint3(uint value)
+		{
+			return new uint3(value, value, value);
+		}
 		private int GetInt(uint v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1644,7 +1841,7 @@ namespace OpenCL
 		{
 			if (!(obj is uint3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((uint3)obj);
 		}
 		public bool Equals(uint3 other)
 		{
@@ -1665,10 +1862,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct uint4 : IEquatable<uint4>
 	{
+		public static uint4 Zero { get { return new uint4(0, 0, 0, 0); } }
+		public static uint4 One { get { return new uint4(1, 1, 1, 1); } }
+		public static uint4 UnitX { get { return new uint4(1, 0, 0, 0); } }
+		public static uint4 UnitY { get { return new uint4(0, 1, 0, 0); } }
+		public static uint4 UnitZ { get { return new uint4(0, 0, 1, 0); } }
+		public static uint4 UnitW { get { return new uint4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public uint X;
 		[FieldOffset(4)]
@@ -1739,6 +1944,11 @@ namespace OpenCL
 		{
 			return uint4.Divide(left, right);
 		}
+
+		public static implicit operator uint4(uint value)
+		{
+			return new uint4(value, value, value, value);
+		}
 		private int GetInt(uint v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1770,10 +1980,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct long2 : IEquatable<long2>
 	{
+		public static long2 Zero { get { return new long2(0, 0); } }
+		public static long2 One { get { return new long2(1, 1); } }
+		public static long2 UnitX { get { return new long2(1, 0); } }
+		public static long2 UnitY { get { return new long2(0, 1); } }
+
 		[FieldOffset(0)]
 		public long X;
 		[FieldOffset(8)]
@@ -1830,6 +2046,11 @@ namespace OpenCL
 		{
 			return long2.Divide(left, right);
 		}
+
+		public static implicit operator long2(long value)
+		{
+			return new long2(value, value);
+		}
 		private int GetInt(long v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1839,7 +2060,7 @@ namespace OpenCL
 		{
 			if (!(obj is long2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((long2)obj);
 		}
 		public bool Equals(long2 other)
 		{
@@ -1859,10 +2080,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct long3 : IEquatable<long3>
 	{
+		public static long3 Zero { get { return new long3(0, 0, 0); } }
+		public static long3 One { get { return new long3(1, 1, 1); } }
+		public static long3 UnitX { get { return new long3(1, 0, 0); } }
+		public static long3 UnitY { get { return new long3(0, 1, 0); } }
+		public static long3 UnitZ { get { return new long3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public long X;
 		[FieldOffset(8)]
@@ -1929,6 +2157,11 @@ namespace OpenCL
 		{
 			return long3.Divide(left, right);
 		}
+
+		public static implicit operator long3(long value)
+		{
+			return new long3(value, value, value);
+		}
 		private int GetInt(long v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -1938,7 +2171,7 @@ namespace OpenCL
 		{
 			if (!(obj is long3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((long3)obj);
 		}
 		public bool Equals(long3 other)
 		{
@@ -1959,10 +2192,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct long4 : IEquatable<long4>
 	{
+		public static long4 Zero { get { return new long4(0, 0, 0, 0); } }
+		public static long4 One { get { return new long4(1, 1, 1, 1); } }
+		public static long4 UnitX { get { return new long4(1, 0, 0, 0); } }
+		public static long4 UnitY { get { return new long4(0, 1, 0, 0); } }
+		public static long4 UnitZ { get { return new long4(0, 0, 1, 0); } }
+		public static long4 UnitW { get { return new long4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public long X;
 		[FieldOffset(8)]
@@ -2033,6 +2274,11 @@ namespace OpenCL
 		{
 			return long4.Divide(left, right);
 		}
+
+		public static implicit operator long4(long value)
+		{
+			return new long4(value, value, value, value);
+		}
 		private int GetInt(long v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2042,7 +2288,7 @@ namespace OpenCL
 		{
 			if (!(obj is long4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((long4)obj);
 		}
 		public bool Equals(long4 other)
 		{
@@ -2064,10 +2310,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ulong2 : IEquatable<ulong2>
 	{
+		public static ulong2 Zero { get { return new ulong2(0, 0); } }
+		public static ulong2 One { get { return new ulong2(1, 1); } }
+		public static ulong2 UnitX { get { return new ulong2(1, 0); } }
+		public static ulong2 UnitY { get { return new ulong2(0, 1); } }
+
 		[FieldOffset(0)]
 		public ulong X;
 		[FieldOffset(8)]
@@ -2124,6 +2376,11 @@ namespace OpenCL
 		{
 			return ulong2.Divide(left, right);
 		}
+
+		public static implicit operator ulong2(ulong value)
+		{
+			return new ulong2(value, value);
+		}
 		private int GetInt(ulong v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2133,7 +2390,7 @@ namespace OpenCL
 		{
 			if (!(obj is ulong2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((ulong2)obj);
 		}
 		public bool Equals(ulong2 other)
 		{
@@ -2153,10 +2410,17 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ulong3 : IEquatable<ulong3>
 	{
+		public static ulong3 Zero { get { return new ulong3(0, 0, 0); } }
+		public static ulong3 One { get { return new ulong3(1, 1, 1); } }
+		public static ulong3 UnitX { get { return new ulong3(1, 0, 0); } }
+		public static ulong3 UnitY { get { return new ulong3(0, 1, 0); } }
+		public static ulong3 UnitZ { get { return new ulong3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public ulong X;
 		[FieldOffset(8)]
@@ -2223,6 +2487,11 @@ namespace OpenCL
 		{
 			return ulong3.Divide(left, right);
 		}
+
+		public static implicit operator ulong3(ulong value)
+		{
+			return new ulong3(value, value, value);
+		}
 		private int GetInt(ulong v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2232,7 +2501,7 @@ namespace OpenCL
 		{
 			if (!(obj is ulong3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((ulong3)obj);
 		}
 		public bool Equals(ulong3 other)
 		{
@@ -2253,10 +2522,18 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ulong4 : IEquatable<ulong4>
 	{
+		public static ulong4 Zero { get { return new ulong4(0, 0, 0, 0); } }
+		public static ulong4 One { get { return new ulong4(1, 1, 1, 1); } }
+		public static ulong4 UnitX { get { return new ulong4(1, 0, 0, 0); } }
+		public static ulong4 UnitY { get { return new ulong4(0, 1, 0, 0); } }
+		public static ulong4 UnitZ { get { return new ulong4(0, 0, 1, 0); } }
+		public static ulong4 UnitW { get { return new ulong4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public ulong X;
 		[FieldOffset(8)]
@@ -2327,6 +2604,11 @@ namespace OpenCL
 		{
 			return ulong4.Divide(left, right);
 		}
+
+		public static implicit operator ulong4(ulong value)
+		{
+			return new ulong4(value, value, value, value);
+		}
 		private int GetInt(ulong v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2336,7 +2618,7 @@ namespace OpenCL
 		{
 			if (!(obj is ulong4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((ulong4)obj);
 		}
 		public bool Equals(ulong4 other)
 		{
@@ -2358,10 +2640,16 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct float2 : IEquatable<float2>
 	{
+		public static float2 Zero { get { return new float2(0, 0); } }
+		public static float2 One { get { return new float2(1, 1); } }
+		public static float2 UnitX { get { return new float2(1, 0); } }
+		public static float2 UnitY { get { return new float2(0, 1); } }
+
 		[FieldOffset(0)]
 		public float X;
 		[FieldOffset(4)]
@@ -2418,6 +2706,11 @@ namespace OpenCL
 		{
 			return float2.Divide(left, right);
 		}
+
+		public static implicit operator float2(float value)
+		{
+			return new float2(value, value);
+		}
 		private int GetInt(float v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2427,7 +2720,7 @@ namespace OpenCL
 		{
 			if (!(obj is float2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((float2)obj);
 		}
 		public bool Equals(float2 other)
 		{
@@ -2447,10 +2740,36 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
+		public float Length { get { return (float)Math.Sqrt(X * X + Y * Y); } }
+		public void Normalize()
+		{
+			float l = this.Length;
+			if (l == 0) return;
+			this.X = this.X / l;
+			this.Y = this.Y / l;
+		}
+		public float2 Normalized()
+		{
+			float2 val = this;
+			val.Normalize();
+			return val;
+		}
+		public float Distance(float2 a, float2 b)
+		{
+			return (a - b).Length;
+		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct float3 : IEquatable<float3>
 	{
+		public static float3 Zero { get { return new float3(0, 0, 0); } }
+		public static float3 One { get { return new float3(1, 1, 1); } }
+		public static float3 UnitX { get { return new float3(1, 0, 0); } }
+		public static float3 UnitY { get { return new float3(0, 1, 0); } }
+		public static float3 UnitZ { get { return new float3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public float X;
 		[FieldOffset(4)]
@@ -2517,6 +2836,11 @@ namespace OpenCL
 		{
 			return float3.Divide(left, right);
 		}
+
+		public static implicit operator float3(float value)
+		{
+			return new float3(value, value, value);
+		}
 		private int GetInt(float v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2526,7 +2850,7 @@ namespace OpenCL
 		{
 			if (!(obj is float3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((float3)obj);
 		}
 		public bool Equals(float3 other)
 		{
@@ -2547,10 +2871,38 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
+		public float Length { get { return (float)Math.Sqrt(X * X + Y * Y + Z * Z); } }
+		public void Normalize()
+		{
+			float l = this.Length;
+			if (l == 0) return;
+			this.X = this.X / l;
+			this.Y = this.Y / l;
+			this.Z = this.Z / l;
+		}
+		public float3 Normalized()
+		{
+			float3 val = this;
+			val.Normalize();
+			return val;
+		}
+		public float Distance(float3 a, float3 b)
+		{
+			return (a - b).Length;
+		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct float4 : IEquatable<float4>
 	{
+		public static float4 Zero { get { return new float4(0, 0, 0, 0); } }
+		public static float4 One { get { return new float4(1, 1, 1, 1); } }
+		public static float4 UnitX { get { return new float4(1, 0, 0, 0); } }
+		public static float4 UnitY { get { return new float4(0, 1, 0, 0); } }
+		public static float4 UnitZ { get { return new float4(0, 0, 1, 0); } }
+		public static float4 UnitW { get { return new float4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public float X;
 		[FieldOffset(4)]
@@ -2621,6 +2973,11 @@ namespace OpenCL
 		{
 			return float4.Divide(left, right);
 		}
+
+		public static implicit operator float4(float value)
+		{
+			return new float4(value, value, value, value);
+		}
 		private int GetInt(float v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2630,7 +2987,7 @@ namespace OpenCL
 		{
 			if (!(obj is float4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((float4)obj);
 		}
 		public bool Equals(float4 other)
 		{
@@ -2652,10 +3009,37 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
+
+		public float Length { get { return (float)Math.Sqrt(X * X + Y * Y + Z * Z + W * W); } }
+		public void Normalize()
+		{
+			float l = this.Length;
+			if (l == 0) return;
+			this.X = this.X / l;
+			this.Y = this.Y / l;
+			this.Z = this.Z / l;
+			this.W = this.W / l;
+		}
+		public float4 Normalized()
+		{
+			float4 val = this;
+			val.Normalize();
+			return val;
+		}
+		public float Distance(float4 a, float4 b)
+		{
+			return (a - b).Length;
+		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct double2 : IEquatable<double2>
 	{
+		public static double2 Zero { get { return new double2(0, 0); } }
+		public static double2 One { get { return new double2(1, 1); } }
+		public static double2 UnitX { get { return new double2(1, 0); } }
+		public static double2 UnitY { get { return new double2(0, 1); } }
+
 		[FieldOffset(0)]
 		public double X;
 		[FieldOffset(8)]
@@ -2712,6 +3096,11 @@ namespace OpenCL
 		{
 			return double2.Divide(left, right);
 		}
+
+		public static implicit operator double2(double value)
+		{
+			return new double2(value, value);
+		}
 		private int GetInt(double v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2721,7 +3110,7 @@ namespace OpenCL
 		{
 			if (!(obj is double2))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((double2)obj);
 		}
 		public bool Equals(double2 other)
 		{
@@ -2741,10 +3130,36 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
+
+		public double Length { get { return (double)Math.Sqrt(X * X + Y * Y); } }
+		public void Normalize()
+		{
+			double l = this.Length;
+			if (l == 0) return;
+			this.X = this.X / l;
+			this.Y = this.Y / l;
+		}
+		public double2 Normalized()
+		{
+			double2 val = this;
+			val.Normalize();
+			return val;
+		}
+		public double Distance(double2 a, double2 b)
+		{
+			return (a - b).Length;
+		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct double3 : IEquatable<double3>
 	{
+		public static double3 Zero { get { return new double3(0, 0, 0); } }
+		public static double3 One { get { return new double3(1, 1, 1); } }
+		public static double3 UnitX { get { return new double3(1, 0, 0); } }
+		public static double3 UnitY { get { return new double3(0, 1, 0); } }
+		public static double3 UnitZ { get { return new double3(0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public double X;
 		[FieldOffset(8)]
@@ -2811,6 +3226,11 @@ namespace OpenCL
 		{
 			return double3.Divide(left, right);
 		}
+
+		public static implicit operator double3(double value)
+		{
+			return new double3(value, value, value);
+		}
 		private int GetInt(double v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2820,7 +3240,7 @@ namespace OpenCL
 		{
 			if (!(obj is double3))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((double3)obj);
 		}
 		public bool Equals(double3 other)
 		{
@@ -2841,10 +3261,38 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
+
+		public double Length { get { return (double)Math.Sqrt(X * X + Y * Y + Z * Z); } }
+		public void Normalize()
+		{
+			double l = this.Length;
+			if (l == 0) return;
+			this.X = this.X / l;
+			this.Y = this.Y / l;
+			this.Z = this.Z / l;
+		}
+		public double3 Normalized()
+		{
+			double3 val = this;
+			val.Normalize();
+			return val;
+		}
+		public double Distance(double3 a, double3 b)
+		{
+			return (a - b).Length;
+		}
+
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct double4 : IEquatable<double4>
 	{
+		public static double4 Zero { get { return new double4(0, 0, 0, 0); } }
+		public static double4 One { get { return new double4(1, 1, 1, 1); } }
+		public static double4 UnitX { get { return new double4(1, 0, 0, 0); } }
+		public static double4 UnitY { get { return new double4(0, 1, 0, 0); } }
+		public static double4 UnitZ { get { return new double4(0, 0, 1, 0); } }
+		public static double4 UnitW { get { return new double4(0, 0, 0, 1); } }
+
 		[FieldOffset(0)]
 		public double X;
 		[FieldOffset(8)]
@@ -2915,6 +3363,11 @@ namespace OpenCL
 		{
 			return double4.Divide(left, right);
 		}
+
+		public static implicit operator double4(double value)
+		{
+			return new double4(value, value, value, value);
+		}
 		private int GetInt(double v) { byte[] bits = BitConverter.GetBytes(v); Array.Resize(ref bits, 4); return BitConverter.ToInt32(bits, 0); }
 		public override int GetHashCode()
 		{
@@ -2924,7 +3377,7 @@ namespace OpenCL
 		{
 			if (!(obj is double4))
 				return false;
-			return this.Equals((uint4)obj);
+			return this.Equals((double4)obj);
 		}
 		public bool Equals(double4 other)
 		{
@@ -2946,6 +3399,27 @@ namespace OpenCL
 		{
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
-	}
 
+		public double Length { get { return (double)Math.Sqrt(X * X + Y * Y + Z * Z + W * W); } }
+		public void Normalize()
+		{
+			double l = this.Length;
+			if (l == 0) return;
+			this.X = this.X / l;
+			this.Y = this.Y / l;
+			this.Z = this.Z / l;
+			this.W = this.W / l;
+		}
+		public double4 Normalized()
+		{
+			double4 val = this;
+			val.Normalize();
+			return val;
+		}
+		public double Distance(double4 a, double4 b)
+		{
+			return (a - b).Length;
+		}
+
+	}
 }
