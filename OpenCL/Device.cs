@@ -16,7 +16,7 @@ namespace OpenCL
 		{
 			int size = GetInformationLength(info);
 			StringBuilder sb = new StringBuilder(size + 1);
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetDeviceInfo(this, info, sb.Capacity, sb, out size));
+			NativeMethods.ThrowError(NativeMethods.clGetDeviceInfo(this, info, sb.Capacity, sb, out size));
 			return sb.ToString().Trim();
 		}
 
@@ -24,7 +24,7 @@ namespace OpenCL
 		{
 			uint value = 0;
 			int size;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetDeviceInfo(this, info, sizeof(uint), out value, out size));
+			NativeMethods.ThrowError(NativeMethods.clGetDeviceInfo(this, info, sizeof(uint), out value, out size));
 			return value;
 		}
 
@@ -32,7 +32,7 @@ namespace OpenCL
 		{
 			int value = 0;
 			int size;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetDeviceInfo(this, info, sizeof(int), out value, out size));
+			NativeMethods.ThrowError(NativeMethods.clGetDeviceInfo(this, info, sizeof(int), out value, out size));
 			return value;
 		}
 
@@ -40,14 +40,14 @@ namespace OpenCL
 		{
 			ulong value = 0;
 			int size;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetDeviceInfo(this, info, sizeof(ulong), out value, out size));
+			NativeMethods.ThrowError(NativeMethods.clGetDeviceInfo(this, info, sizeof(ulong), out value, out size));
 			return value;
 		}
 
 		private int GetInformationLength(DeviceInfo info)
 		{
 			int size;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetDeviceInfo(this, info, 0, IntPtr.Zero, out size));
+			NativeMethods.ThrowError(NativeMethods.clGetDeviceInfo(this, info, 0, IntPtr.Zero, out size));
 			return size;
 		}
 

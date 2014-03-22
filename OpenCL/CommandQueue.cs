@@ -14,18 +14,18 @@ namespace OpenCL
 
 		public void Flush()
 		{
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clFlush(this));
+			NativeMethods.ThrowError(NativeMethods.clFlush(this));
 		}
 
 		public void Finish()
 		{
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clFinish(this));
+			NativeMethods.ThrowError(NativeMethods.clFinish(this));
 		}
 
 		public CLEvent EnqueueNDRangeKernel(Kernel kernel, int workdim, uint[] workOffset, uint[] globalWorkSize, uint[] localWorkSize, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueNDRangeKernel(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueNDRangeKernel(
 				this,
 				kernel,
 				(uint)workdim,
@@ -41,7 +41,7 @@ namespace OpenCL
 		public CLEvent EnqueueNDRangeKernel(Kernel kernel, int workdim, int[] workOffset, int[] globalWorkSize, int[] localWorkSize, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueNDRangeKernel(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueNDRangeKernel(
 				this,
 				kernel,
 				(uint)workdim,
@@ -57,7 +57,7 @@ namespace OpenCL
 		public CLEvent EnqueueReadBuffer(Memory memory, bool blocking, int offset, IntPtr data, int size, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueReadBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueReadBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -73,7 +73,7 @@ namespace OpenCL
 		public unsafe CLEvent EnqueueReadBuffer(Memory memory, bool blocking, int offset, void *data, int size, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueReadBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueReadBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -89,7 +89,7 @@ namespace OpenCL
 		public CLEvent EnqueueReadBuffer(Memory memory, bool blocking, int offset, byte[] target, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueReadBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueReadBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -105,7 +105,7 @@ namespace OpenCL
 		public CLEvent EnqueueReadBuffer(Memory memory, bool blocking, int offset, int[] target, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueReadBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueReadBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -121,7 +121,7 @@ namespace OpenCL
 		public CLEvent EnqueueReadBuffer(Memory memory, bool blocking, int offset, float[] target, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueReadBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueReadBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -137,7 +137,7 @@ namespace OpenCL
 		public CLEvent EnqueueWriteBuffer(Memory memory, bool blocking, int offset, IntPtr data,int size, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueWriteBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueWriteBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -153,7 +153,7 @@ namespace OpenCL
 		public unsafe CLEvent EnqueueWriteBuffer(Memory memory, bool blocking, int offset, void *data, int size, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueWriteBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueWriteBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -169,7 +169,7 @@ namespace OpenCL
 		public CLEvent EnqueueWriteBuffer(Memory memory, bool blocking, int offset, byte[] data, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueWriteBuffer(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueWriteBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -190,7 +190,7 @@ namespace OpenCL
 			IntPtr mem = Marshal.AllocHGlobal(size);
 			Marshal.StructureToPtr(data, mem, false);
 
-			int error = OpenCLNative.NativeMethods.clEnqueueWriteBuffer(
+			int error = NativeMethods.clEnqueueWriteBuffer(
 				this,
 				memory,
 				(uint)(blocking ? 1 : 0),
@@ -201,14 +201,14 @@ namespace OpenCL
 				wait_event_list.Length > 0 ? wait_event_list : null,
 				out ev);
 			Marshal.FreeHGlobal(mem);
-			OpenCLNative.ThrowError(error);
+			NativeMethods.ThrowError(error);
 			return ev;
 		}
 
 		public unsafe CLEvent EnqueueReadImage(Memory image, bool blocking, uint[] origin, uint[] region, int row_pitch, int slice_pitch, void *ptr, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			int error = OpenCLNative.NativeMethods.clEnqueueReadImage(
+			int error = NativeMethods.clEnqueueReadImage(
 				this,
 				image,
 				blocking,
@@ -220,14 +220,14 @@ namespace OpenCL
 				(uint)wait_event_list.Length,
 				wait_event_list.Length > 0 ? wait_event_list : null,
 				out ev);
-			OpenCLNative.ThrowError(error);
+			NativeMethods.ThrowError(error);
 			return ev;
 		}
 
 		public CLEvent EnqueueReadImage(Memory image, bool blocking, uint[] origin, uint[] region, int row_pitch, int slice_pitch, IntPtr ptr, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			int error = OpenCLNative.NativeMethods.clEnqueueReadImage(
+			int error = NativeMethods.clEnqueueReadImage(
 				this,
 				image,
 				blocking,
@@ -239,14 +239,14 @@ namespace OpenCL
 				(uint)wait_event_list.Length,
 				wait_event_list.Length > 0 ? wait_event_list : null,
 				out ev);
-			OpenCLNative.ThrowError(error);
+			NativeMethods.ThrowError(error);
 			return ev;
 		}
 
 		public CLEvent EnqueueReadImage(Memory image, bool blocking, int[] origin, int[] region, int row_pitch, int slice_pitch, IntPtr ptr, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			int error = OpenCLNative.NativeMethods.clEnqueueReadImage(
+			int error = NativeMethods.clEnqueueReadImage(
 				this,
 				image,
 				blocking,
@@ -258,14 +258,14 @@ namespace OpenCL
 				(uint)wait_event_list.Length,
 				wait_event_list.Length > 0 ? wait_event_list : null,
 				out ev);
-			OpenCLNative.ThrowError(error);
+			NativeMethods.ThrowError(error);
 			return ev;
 		}
 
 		public unsafe CLEvent EnqueueWriteImage(Memory image, bool blocking, uint[] origin, uint[] region, int row_pitch, int slice_pitch, void* ptr, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			int error = OpenCLNative.NativeMethods.clEnqueueWriteImage(
+			int error = NativeMethods.clEnqueueWriteImage(
 				this,
 				image,
 				blocking,
@@ -277,14 +277,14 @@ namespace OpenCL
 				(uint)wait_event_list.Length,
 				wait_event_list.Length > 0 ? wait_event_list : null,
 				out ev);
-			OpenCLNative.ThrowError(error);
+			NativeMethods.ThrowError(error);
 			return ev;
 		}
 
 		public CLEvent EnqueueWriteImage(Memory image, bool blocking, uint[] origin, uint[] region, int row_pitch, int slice_pitch, IntPtr ptr, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			int error = OpenCLNative.NativeMethods.clEnqueueWriteImage(
+			int error = NativeMethods.clEnqueueWriteImage(
 				this,
 				image,
 				blocking,
@@ -296,14 +296,14 @@ namespace OpenCL
 				(uint)wait_event_list.Length,
 				wait_event_list.Length > 0 ? wait_event_list : null,
 				out ev);
-			OpenCLNative.ThrowError(error);
+			NativeMethods.ThrowError(error);
 			return ev;
 		}
 
 		public CLEvent EnqueueAcquireGLObjects(Memory[] objects, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueAcquireGLObjects(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueAcquireGLObjects(
 				this,
 				(uint)objects.Length,
 				objects,
@@ -316,7 +316,7 @@ namespace OpenCL
 		public CLEvent EnqueueReleaseGLObjects(Memory[] objects, params CLEvent[] wait_event_list)
 		{
 			CLEvent ev;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clEnqueueReleaseGLObjects(
+			NativeMethods.ThrowError(NativeMethods.clEnqueueReleaseGLObjects(
 				this,
 				(uint)objects.Length,
 				objects,
@@ -334,7 +334,7 @@ namespace OpenCL
 
 		public void Dispose()
 		{
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clReleaseCommandQueue(this));
+			NativeMethods.ThrowError(NativeMethods.clReleaseCommandQueue(this));
 		}
 	}
 }

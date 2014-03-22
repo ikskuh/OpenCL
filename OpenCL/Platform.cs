@@ -24,10 +24,10 @@ namespace OpenCL
 		public Device[] GetDevices(DeviceType type)
 		{
 			uint num;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetDeviceIDs(this, type, 0,  null, out num));
+			NativeMethods.ThrowError(NativeMethods.clGetDeviceIDs(this, type, 0,  null, out num));
 
 			Device[] devices = new Device[num];
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetDeviceIDs(this, type, num, devices, out num));
+			NativeMethods.ThrowError(NativeMethods.clGetDeviceIDs(this, type, num, devices, out num));
 
 			return devices;
 		}
@@ -35,10 +35,10 @@ namespace OpenCL
 		private string GetInformation(PlatformInfo info)
 		{
 			int size;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetPlatformInfo(this, info, 0, null, out size));
+			NativeMethods.ThrowError(NativeMethods.clGetPlatformInfo(this, info, 0, null, out size));
 
 			StringBuilder sb = new StringBuilder(size + 1);
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetPlatformInfo(this, info, sb.Capacity, sb, out size));
+			NativeMethods.ThrowError(NativeMethods.clGetPlatformInfo(this, info, sb.Capacity, sb, out size));
 
 			return sb.ToString().Trim();
 		}
@@ -76,10 +76,10 @@ namespace OpenCL
 		public static Platform[] GetPlatforms()
 		{
 			uint num;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetPlatformIDs(0, null, out num));
+			NativeMethods.ThrowError(NativeMethods.clGetPlatformIDs(0, null, out num));
 
 			Platform[] platforms = new Platform[num];
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clGetPlatformIDs(num, platforms, out num));
+			NativeMethods.ThrowError(NativeMethods.clGetPlatformIDs(num, platforms, out num));
 
 			return platforms;
 		}

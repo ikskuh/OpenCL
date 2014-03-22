@@ -13,7 +13,7 @@ namespace OpenCL
 		{
 			if(events.Length == 0)
 				return;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clWaitForEvents(
+			NativeMethods.ThrowError(NativeMethods.clWaitForEvents(
 				(uint)events.Length,
 				events));
 		}

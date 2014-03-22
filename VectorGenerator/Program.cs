@@ -14,44 +14,50 @@ namespace VectorGenerator
 		static void Main(string[] args)
 		{
 			GenerateVectorClasses();
-			//GenerateKernel();
-			//GenerateNatives();
+			GenerateSource();
 		}
 
-		private static void GenerateNatives()
+		private static void GenerateSource()
 		{
 			string[] types = new[] { "byte", "sbyte", "short", "ushort", "int", "uint", "long", "ulong", "float", "double" };
 			int[] dimensions = new[] { 2, 3, 4 };
-			using (var stream = File.Open("native.cs", FileMode.Create))
+			using (var stream = File.Open("GeneratedSource.cs", FileMode.Create))
 			{
 				StreamWriter writer = new StreamWriter(stream);
+				writer.WriteLine("using System;");
+				writer.WriteLine("using System.Runtime.InteropServices;");
+				writer.WriteLine("namespace OpenCL");
+				writer.WriteLine("{");
+				writer.WriteLine("partial class NativeMethods");
+				writer.WriteLine("{");
+
 				for (int typeID = 0; typeID < types.Length; typeID++)
 				{
-					writer.WriteLine(GenerateNativeSetKernelArgs(types[typeID]));
+					writer.WriteLine(GenerateNativeSetKernelArgs("ref " + types[typeID]));
+
 					for (int dimensionID = 0; dimensionID < dimensions.Length; dimensionID++)
 					{
-						writer.WriteLine(GenerateNativeSetKernelArgs(types[typeID] + dimensions[dimensionID]));
+						string typeName = types[typeID] + dimensions[dimensionID];
+						writer.WriteLine(GenerateNativeSetKernelArgs("ref " + typeName));
 					}
 				}
-				writer.Flush();
-			}
-		}
 
-		private static void GenerateKernel()
-		{
-			string[] types = new[] { "byte", "sbyte", "short", "ushort", "int", "uint", "long", "ulong", "float", "double" };
-			int[] dimensions = new[] { 2, 3, 4 };
-			using (var stream = File.Open("kernel.cs", FileMode.Create))
-			{
-				StreamWriter writer = new StreamWriter(stream);
+				writer.WriteLine("}");
+				writer.WriteLine();
+				writer.WriteLine("partial struct Kernel");
+				writer.WriteLine("{");
 				for (int typeID = 0; typeID < types.Length; typeID++)
 				{
 					writer.WriteLine(GenerateSetKernelArgs(types[typeID]));
 					for (int dimensionID = 0; dimensionID < dimensions.Length; dimensionID++)
 					{
-						writer.WriteLine(GenerateSetKernelArgs(types[typeID] + dimensions[dimensionID]));
+						string typeName = types[typeID] + dimensions[dimensionID];
+						writer.WriteLine(GenerateSetKernelArgs(typeName));
 					}
 				}
+				writer.WriteLine("}");
+				writer.WriteLine("}");
+
 				writer.Flush();
 			}
 		}
@@ -95,7 +101,7 @@ namespace VectorGenerator
 			code += "public void SetArgument(int argumentID, " + typeName + " value)\n";
 			code += "{\n";
 			code += "if (argumentID < 0) throw new ArgumentException(\"argumentID can't be smaller 0\", \"argumentID\");\n";
-			code += "OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clSetKernelArg(this, (uint)argumentID, (uint)Marshal.SizeOf(value), ref value));\n";
+			code += "NativeMethods.ThrowError(NativeMethods.clSetKernelArg(this, (uint)argumentID, (uint)Marshal.SizeOf(value), ref value));\n";
 			code += "}\n";
 			return code;
 		}
@@ -103,8 +109,8 @@ namespace VectorGenerator
 		private static string GenerateNativeSetKernelArgs(string typeName)
 		{
 			string code = "";
-			code += "[DllImport(OpenCLNative.Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]\n";
-			code += "public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, ref " + typeName + " arg_value);\n";
+			code += "[DllImport(Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]\n";
+			code += "public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, " + typeName + " arg_value);\n";
 			return code;
 		}
 
@@ -186,6 +192,12 @@ private {1} {2};" + "\n",
 
 			if (generateAux)
 				code += GenerateAuxiliary(typeName, vectorType, vectorComponents) + "\n";
+
+
+			code += "public " + typeName + "[] ToArray()\n";
+			code += "{\n";
+			code += "return new [] { " + string.Join(", ", vectorComponents) + "};\n";
+			code += "}\n";
 
 			code += "}";
 

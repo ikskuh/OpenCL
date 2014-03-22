@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BuildStatus.cs" />
+    <Compile Include="GeneratedSource.cs" />
     <Compile Include="VectorTypes.cs" />
     <Compile Include="CLError.cs" />
     <Compile Include="CLEvent.cs" />
@@ -50,7 +51,7 @@
     <Compile Include="Kernel.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="MemoryFlags.cs" />
-    <Compile Include="OpenCL.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="OpenCLException.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="PlatformInfo.cs" />

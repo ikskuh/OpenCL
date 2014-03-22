@@ -21,7 +21,7 @@ namespace OpenCL
 		public void Dispose()
 		{
 			if (this.id == 0) return;
-			OpenCLNative.ThrowError(OpenCLNative.NativeMethods.clReleaseMemObject(this));
+			NativeMethods.ThrowError(NativeMethods.clReleaseMemObject(this));
 			this.id = 0;
 		}
 	}

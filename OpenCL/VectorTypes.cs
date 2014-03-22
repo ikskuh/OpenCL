@@ -101,6 +101,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public byte[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct byte3 : IEquatable<byte3>
@@ -231,6 +235,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public byte[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct byte4 : IEquatable<byte4>
@@ -349,6 +357,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public byte[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct sbyte2 : IEquatable<sbyte2>
@@ -449,6 +461,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public sbyte[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct sbyte3 : IEquatable<sbyte3>
@@ -579,6 +595,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public sbyte[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct sbyte4 : IEquatable<sbyte4>
@@ -697,6 +717,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public sbyte[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct short2 : IEquatable<short2>
@@ -797,6 +821,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public short[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct short3 : IEquatable<short3>
@@ -927,6 +955,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public short[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct short4 : IEquatable<short4>
@@ -1045,6 +1077,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public short[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ushort2 : IEquatable<ushort2>
@@ -1145,6 +1181,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public ushort[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ushort3 : IEquatable<ushort3>
@@ -1275,6 +1315,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public ushort[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ushort4 : IEquatable<ushort4>
@@ -1393,6 +1437,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public ushort[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct int2 : IEquatable<int2>
@@ -1493,6 +1541,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public int[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct int3 : IEquatable<int3>
@@ -1623,6 +1675,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public int[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct int4 : IEquatable<int4>
@@ -1741,6 +1797,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public int[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct uint2 : IEquatable<uint2>
@@ -1841,6 +1901,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public uint[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct uint3 : IEquatable<uint3>
@@ -1971,6 +2035,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public uint[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct uint4 : IEquatable<uint4>
@@ -2089,6 +2157,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public uint[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct long2 : IEquatable<long2>
@@ -2189,6 +2261,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public long[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct long3 : IEquatable<long3>
@@ -2319,6 +2395,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public long[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct long4 : IEquatable<long4>
@@ -2437,6 +2517,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public long[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ulong2 : IEquatable<ulong2>
@@ -2537,6 +2621,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ")";
 		}
 		
+		public ulong[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ulong3 : IEquatable<ulong3>
@@ -2667,6 +2755,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ")";
 		}
 		
+		public ulong[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct ulong4 : IEquatable<ulong4>
@@ -2785,6 +2877,10 @@ namespace OpenCL
 			return "(" + this.X.ToString() + ", " + this.Y.ToString() + ", " + this.Z.ToString() + ", " + this.W.ToString() + ")";
 		}
 		
+		public ulong[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct float2 : IEquatable<float2>
@@ -2944,6 +3040,10 @@ namespace OpenCL
 			return result;
 		}
 		
+		public float[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct float3 : IEquatable<float3>
@@ -3138,6 +3238,10 @@ namespace OpenCL
 			return result;
 		}
 		
+		public float[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct float4 : IEquatable<float4>
@@ -3325,6 +3429,10 @@ namespace OpenCL
 			return result;
 		}
 		
+		public float[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct double2 : IEquatable<double2>
@@ -3484,6 +3592,10 @@ namespace OpenCL
 			return result;
 		}
 		
+		public double[] ToArray()
+		{
+			return new [] { X, Y};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct double3 : IEquatable<double3>
@@ -3678,6 +3790,10 @@ namespace OpenCL
 			return result;
 		}
 		
+		public double[] ToArray()
+		{
+			return new [] { X, Y, Z};
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public struct double4 : IEquatable<double4>
@@ -3865,5 +3981,9 @@ namespace OpenCL
 			return result;
 		}
 		
+		public double[] ToArray()
+		{
+			return new [] { X, Y, Z, W};
+		}
 	}
 }
