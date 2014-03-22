@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="BuildStatus.cs" />
     <Compile Include="GeneratedSource.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="VectorTypes.cs" />
     <Compile Include="CLError.cs" />
     <Compile Include="CLEvent.cs" />

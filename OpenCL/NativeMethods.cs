@@ -129,30 +129,6 @@ namespace OpenCL
 			void* host_ptr,
 			out int errcode_ret);
 
-		[DllImport(Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-		public static extern Memory clCreateBuffer(
-			Context context,
-			MemoryFlags flags,
-			uint size,
-			[In] [MarshalAs(UnmanagedType.LPArray)] byte[] data,
-			out int errcode_ret);
-
-		[DllImport(Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-		public static extern Memory clCreateBuffer(
-			Context context,
-			MemoryFlags flags,
-			uint size,
-			[In] [MarshalAs(UnmanagedType.LPArray)] float[] data,
-			out int errcode_ret);
-
-		[DllImport(Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-		public static extern Memory clCreateBuffer(
-			Context context,
-			MemoryFlags flags,
-			uint size,
-			[In] [MarshalAs(UnmanagedType.LPArray)] int[] data,
-			out int errcode_ret);
-
 		#endregion
 
 		#region clCreateImage[n]D

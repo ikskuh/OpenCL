@@ -7,7 +7,7 @@ using System.Text;
 namespace OpenCL
 {
 	[StructLayout(LayoutKind.Explicit)]
-	public struct Context : IDisposable
+	public partial struct Context : IDisposable
 	{
 		//CL_GL_CONTEXT_KHR			0x2008
 		//CL_EGL_DISPLAY_KHR		0x2009
@@ -46,7 +46,7 @@ namespace OpenCL
 			return queue;
 		}
 
-		public Memory CreateBuffer(MemoryFlags flags, int size)
+		public Memory CreateSizedBuffer(MemoryFlags flags, int size)
 		{
 			int error;
 			Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)size, IntPtr.Zero, out error);
@@ -80,30 +80,6 @@ namespace OpenCL
 		{
 			int error;
 			Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)size, data, out error);
-			NativeMethods.ThrowError(error);
-			return memory;
-		}
-
-		public Memory CreateBuffer(MemoryFlags flags, byte[] values)
-		{
-			int error;
-			Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)(values.Length), values, out error);
-			NativeMethods.ThrowError(error);
-			return memory;
-		}
-
-		public Memory CreateBuffer(MemoryFlags flags, float[] values)
-		{
-			int error;
-			Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)(sizeof(float) * values.Length), values, out error);
-			NativeMethods.ThrowError(error);
-			return memory;
-		}
-
-		public Memory CreateBuffer(MemoryFlags flags, int[] values)
-		{
-			int error;
-			Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)(sizeof(float) * values.Length), values, out error);
 			NativeMethods.ThrowError(error);
 			return memory;
 		}

@@ -10,6 +10,9 @@ namespace VectorGenerator
 	class Program
 	{
 		static string[] components = new[] { "X", "Y", "Z", "W" };
+		static string[] types = new[] { "byte", "sbyte", "short", "ushort", "int", "uint", "long", "ulong", "float", "double" };
+		static int[] lengths = new[] { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8 };
+		static int[] dimensions = new[] { 2, 3, 4 };
 
 		static void Main(string[] args)
 		{
@@ -19,8 +22,6 @@ namespace VectorGenerator
 
 		private static void GenerateSource()
 		{
-			string[] types = new[] { "byte", "sbyte", "short", "ushort", "int", "uint", "long", "ulong", "float", "double" };
-			int[] dimensions = new[] { 2, 3, 4 };
 			using (var stream = File.Open("GeneratedSource.cs", FileMode.Create))
 			{
 				StreamWriter writer = new StreamWriter(stream);
@@ -42,7 +43,25 @@ namespace VectorGenerator
 					}
 				}
 
+				for (int typeID = 0; typeID < types.Length; typeID++)
+				{
+					writer.WriteLine(GenerateNativeCreateBuffer("ref " + types[typeID]));
+					writer.WriteLine(GenerateNativeCreateBuffer(types[typeID] + "[]"));
+					writer.WriteLine(GenerateNativeCreateBuffer(types[typeID] + "[,]"));
+					writer.WriteLine(GenerateNativeCreateBuffer(types[typeID] + "[,,]"));
+
+					for (int dimensionID = 0; dimensionID < dimensions.Length; dimensionID++)
+					{
+						string typeName = types[typeID] + dimensions[dimensionID];
+						writer.WriteLine(GenerateNativeCreateBuffer("ref " + typeName));
+						writer.WriteLine(GenerateNativeCreateBuffer(typeName + "[]"));
+						writer.WriteLine(GenerateNativeCreateBuffer(typeName + "[,]"));
+						writer.WriteLine(GenerateNativeCreateBuffer(typeName + "[,,]"));
+					}
+				}
 				writer.WriteLine("}");
+
+				// Kernel
 				writer.WriteLine();
 				writer.WriteLine("partial struct Kernel");
 				writer.WriteLine("{");
@@ -56,17 +75,37 @@ namespace VectorGenerator
 					}
 				}
 				writer.WriteLine("}");
+
+				// Context
+				writer.WriteLine();
+				writer.WriteLine("partial struct Context");
+				writer.WriteLine("{");
+				for (int typeID = 0; typeID < types.Length; typeID++)
+				{
+					writer.WriteLine(GenerateCreateBuffer(types[typeID], true));
+					writer.WriteLine(GenerateCreateBuffer(types[typeID] + "[]", false));
+					writer.WriteLine(GenerateCreateBuffer(types[typeID] + "[,]", false));
+					writer.WriteLine(GenerateCreateBuffer(types[typeID] + "[,,]", false));
+
+					for (int dimensionID = 0; dimensionID < dimensions.Length; dimensionID++)
+					{
+						string typeName = types[typeID] + dimensions[dimensionID];
+						writer.WriteLine(GenerateCreateBuffer(typeName, true));
+						writer.WriteLine(GenerateCreateBuffer(typeName + "[]", false));
+						writer.WriteLine(GenerateCreateBuffer(typeName + "[,]", false));
+						writer.WriteLine(GenerateCreateBuffer(typeName + "[,,]", false));
+					}
+				}
 				writer.WriteLine("}");
 
+
+				writer.WriteLine("}");
 				writer.Flush();
 			}
 		}
 
 		private static void GenerateVectorClasses()
 		{
-			string[] types = new[] { "byte", "sbyte", "short", "ushort", "int", "uint", "long", "ulong", "float", "double" };
-			int[] lengths = new[] { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8 };
-			int[] dimensions = new[] { 2, 3, 4 };
 			using (var stream = File.Open("VectorTypes.cs", FileMode.Create))
 			{
 				StreamWriter writer = new StreamWriter(stream);
@@ -111,6 +150,35 @@ namespace VectorGenerator
 			string code = "";
 			code += "[DllImport(Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]\n";
 			code += "public static extern int clSetKernelArg(Kernel kernel, uint arg_index, uint arg_size, " + typeName + " arg_value);\n";
+			return code;
+		}
+
+		private static string GenerateNativeCreateBuffer(string typeName)
+		{
+			string code = "";
+			code += "[DllImport(Library, CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]\n";
+			code += "public static extern Memory clCreateBuffer(\n";
+			code += "	Context context,\n";
+			code += "MemoryFlags flags,\n";
+			code += "uint size,\n";
+			code += "[In] [MarshalAs(UnmanagedType.LPArray)] " + typeName + " data,\n";
+			code += "out int errcode_ret);\n";
+			return code;
+		}
+
+		private static string GenerateCreateBuffer(string typeName, bool isRef)
+		{
+			string code = "";
+			code += "public Memory CreateBuffer(MemoryFlags flags, " + typeName + " value)\n";
+			code += "{\n";
+			code += "int error;\n";
+			if (!isRef)
+				code += "Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)(Helpers.SizeOf(value)), value, out error);\n";
+			else
+				code += "Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)Marshal.SizeOf(value), ref value, out error);\n";
+			code += "NativeMethods.ThrowError(error);\n";
+			code += "return memory;\n";
+			code += "}\n";
 			return code;
 		}
 
@@ -191,7 +259,15 @@ private {1} {2};" + "\n",
 			code += GenerateDefaultOverrides(typeName, vectorType, vectorComponents) + "\n";
 
 			if (generateAux)
+			{
 				code += GenerateAuxiliary(typeName, vectorType, vectorComponents) + "\n";
+
+				if (dimension == 3)
+				{
+					// Cross product
+					code += GenerateCrossProduct(typeName, vectorType, vectorComponents) + "\n";
+				}
+			}
 
 
 			code += "public " + typeName + "[] ToArray()\n";
@@ -476,6 +552,20 @@ private {1} {2};" + "\n",
 				"return \"(\" + this." +
 				string.Join(".ToString() + \", \" + this.", vectorComponents) + ".ToString() + \")\";\n" +
 				"}\n";
+			return code;
+		}
+
+		private static string GenerateCrossProduct(string typeName, string vectorType, string[] vectorComponents)
+		{
+			string code = "";
+			code += "public static " + vectorType + " Cross(" + vectorType + " a, " + vectorType + " b)\n";
+			code += "{\n";
+			code += "" + vectorType + " result = new " + vectorType + "();\n";
+			code += "result.X = (a.Y * b.Z) - (a.Z * b.Y);\n";
+			code += "result.Y = (a.Z * b.X) - (a.X * b.Z);\n";
+			code += "result.Z = (a.X * b.Y) - (a.Y * b.X);\n";
+			code += "return result;\n";
+			code += "}\n";
 			return code;
 		}
 	}
