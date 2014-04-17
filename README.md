@@ -12,3 +12,9 @@ Usage:
 OpenCL.Build file.cl [OpenCL Compiler Commandline]
 
 Everything after the filename is passed directly to the OpenCL clBuildProgram function.
+
+Headers
+======
+
+A collection of useful OpenCL header files. Most headers are build for raytracing, but can
+be used for other applications as well.
