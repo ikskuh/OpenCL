@@ -29,10 +29,35 @@ namespace OpenCL
 			NativeMethods.ThrowError(NativeMethods.clSetKernelArg(this, (uint)argumentID, (uint)length, data));
 		}
 
+		public static bool operator ==(Kernel a, Kernel b)
+		{
+			return a.id == b.id;
+		}
+
+		public static bool operator !=(Kernel a, Kernel b)
+		{
+			return a.id != b.id;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			if (obj is Kernel)
+				return this.id == ((Kernel)obj).id;
+			else
+				return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return this.id.GetHashCode();
+		}
+
 		public int ID
 		{
 			get { return id; }
-			set { id = value; }
+			//set { id = value; }
 		}
 
 		public void Dispose()

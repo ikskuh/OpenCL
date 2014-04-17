@@ -60,7 +60,7 @@ namespace OpenCL
 			int size = Marshal.SizeOf(typeof(T));
 
 			IntPtr mem = Marshal.AllocHGlobal(size);
-			Marshal.StructureToPtr(value, mem, false);	
+			Marshal.StructureToPtr(value, mem, false);
 
 			Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)(size), mem, out error);
 			Marshal.FreeHGlobal(mem);
@@ -76,7 +76,7 @@ namespace OpenCL
 			return memory;
 		}
 
-		public unsafe Memory CreateBuffer(MemoryFlags flags, int size, void *data)
+		public unsafe Memory CreateBuffer(MemoryFlags flags, int size, void* data)
 		{
 			int error;
 			Memory memory = NativeMethods.clCreateBuffer(this, flags, (uint)size, data, out error);
@@ -84,7 +84,7 @@ namespace OpenCL
 			return memory;
 		}
 
-		public Memory CreateImage2D(MemoryFlags flags, ImageFormat format,  int width, int height, int row_pitch, IntPtr host_ptr)
+		public Memory CreateImage2D(MemoryFlags flags, ImageFormat format, int width, int height, int row_pitch, IntPtr host_ptr)
 		{
 			int error;
 			Memory memory = NativeMethods.clCreateImage2D(this, flags, ref format, (uint)width, (uint)height, (uint)row_pitch, host_ptr, out error);
@@ -92,7 +92,7 @@ namespace OpenCL
 			return memory;
 		}
 
-		public unsafe Memory CreateImage2D(MemoryFlags flags, ImageFormat format, int width, int height, int row_pitch, void *host_ptr)
+		public unsafe Memory CreateImage2D(MemoryFlags flags, ImageFormat format, int width, int height, int row_pitch, void* host_ptr)
 		{
 			int error;
 			Memory memory = NativeMethods.clCreateImage2D(this, flags, ref format, (uint)width, (uint)height, (uint)row_pitch, host_ptr, out error);
@@ -142,10 +142,35 @@ namespace OpenCL
 			return pgm;
 		}
 
+		public static bool operator ==(Context a, Context b)
+		{
+			return a.id == b.id;
+		}
+
+		public static bool operator !=(Context a, Context b)
+		{
+			return a.id != b.id;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			if (obj is Context)
+				return this.id == ((Context)obj).id;
+			else
+				return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return this.id.GetHashCode();
+		}
+
 		public int ID
 		{
 			get { return id; }
-			set { id = value; }
+			//set { id = value; }
 		}
 
 		public void Dispose()

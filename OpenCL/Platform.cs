@@ -68,6 +68,31 @@ namespace OpenCL
 			get { return this.GetInformation(PlatformInfo.Profile); }
 		}
 
+		public static bool operator ==(Platform a, Platform b)
+		{
+			return a.id == b.id;
+		}
+
+		public static bool operator !=(Platform a, Platform b)
+		{
+			return a.id != b.id;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			if (obj is Platform)
+				return this.id == ((Platform)obj).id;
+			else
+				return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return this.id.GetHashCode();
+		}
+
 		public override string ToString()
 		{
 			return this.Name;

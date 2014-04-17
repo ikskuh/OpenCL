@@ -60,10 +60,35 @@ namespace OpenCL
 			return kernels;
 		}
 
+		public static bool operator ==(Program a, Program b)
+		{
+			return a.id == b.id;
+		}
+
+		public static bool operator !=(Program a, Program b)
+		{
+			return a.id != b.id;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			if (obj is Program)
+				return this.id == ((Program)obj).id;
+			else
+				return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return this.id.GetHashCode();
+		}
+
 		public int ID
 		{
 			get { return id; }
-			set { id = value; }
+			//set { id = value; }
 		}
 
 		public void Dispose()

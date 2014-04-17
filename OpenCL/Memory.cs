@@ -12,10 +12,35 @@ namespace OpenCL
 		[FieldOffset(0)]
 		private int id;
 
+		public static bool operator ==(Memory a, Memory b)
+		{
+			return a.id == b.id;
+		}
+
+		public static bool operator !=(Memory a, Memory b)
+		{
+			return a.id != b.id;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			if (obj is Memory)
+				return this.id == ((Memory)obj).id;
+			else
+				return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return this.id.GetHashCode();
+		}
+
 		public int ID
 		{
 			get { return id; }
-			set { id = value; }
+			//set { id = value; }
 		}
 
 		public void Dispose()

@@ -53,7 +53,7 @@ namespace OpenCL
 
 		public string Name
 		{
-			get {return this.GetInformationString(DeviceInfo.Name);}
+			get { return this.GetInformationString(DeviceInfo.Name); }
 		}
 
 		public string Vendor
@@ -142,6 +142,31 @@ namespace OpenCL
 			{
 				return new Platform(this.GetInformationInt32(DeviceInfo.Platform));
 			}
+		}
+
+		public static bool operator ==(Device a, Device b)
+		{
+			return a.id == b.id;
+		}
+
+		public static bool operator !=(Device a, Device b)
+		{
+			return a.id != b.id;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			if (obj is Device)
+				return this.id == ((Device)obj).id;
+			else
+				return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return this.id.GetHashCode();
 		}
 
 		public int ID
