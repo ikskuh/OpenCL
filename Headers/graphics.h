@@ -3,6 +3,10 @@
 
 __constant float4 COLOR_RED = (float4)(1.0f, 0.0f, 0.0f, 1.0f);
 __constant float4 COLOR_BLUE = (float4)(0.0f, 0.0f, 1.0f, 1.0f);
+__constant float4 COLOR_LIME = (float4)(0.0f, 1.0f, 0.0f, 1.0f);
+__constant float4 COLOR_BLACK = (float4)(0.0f, 0.0f, 0.0f, 1.0f);
+__constant float4 COLOR_WHITE = (float4)(1.0f, 1.0f, 1.0f, 1.0f);
+
 
 /**
  * Converts a color to 

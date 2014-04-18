@@ -36,6 +36,21 @@ typedef struct
 } Box;
 
 /**
+ * Defines a sphere.
+ */
+typedef struct
+{
+	/**
+	 * Center of the sphere.
+	 */
+	float3 origin;
+	/**
+	 * Radius of the sphere.
+	 */
+	float radius;
+} Sphere;
+
+/**
  * Defines a intersection.
  */
 typedef struct
@@ -57,7 +72,7 @@ typedef struct
 } Intersection;
 
 /**
- * Checks if a ray intersects with a box.
+ * Checks if a ray intersects a box.
  * \return true if the ray hits the box.
  */
 bool intersect_box(Ray *ray, Box *box, Intersection *intersection)
@@ -142,14 +157,29 @@ bool intersect_box(Ray *ray, Box *box, Intersection *intersection)
 	if(intersection != nullptr)
 	{
 		intersection->position = ray->origin + dist * ray->direction;
-		intersection->normal = (float3)(0.0f, 0.0f, 0.0f);
 		intersection->distance = dist;
+		
+		float3 offset = intersection->position - (0.5f * box->maximum + 0.5f * box->minimum);
+		offset /= (box->maximum - box->minimum);
+		
+		if(fabs(offset.x) > fabs(offset.y) && fabs(offset.x) > fabs(offset.z))
+		{
+			intersection->normal = (float3)((float)sign(offset.x), 0.0f, 0.0f);
+		}
+		else if(fabs(offset.y) > fabs(offset.z))
+		{
+			intersection->normal = (float3)(0.0f, (float)sign(offset.y), 0.0f);
+		}
+		else
+		{
+			intersection->normal = (float3)(0.0f, 0.0f, (float)sign(offset.z));
+		}
 	}
 	return true;
 }
 
 /**
- * Checks if a ray intersects with a cuboid.
+ * Checks if a ray intersects a cuboid.
  * \return true if the ray hits the cuboid.
  */
 bool intersect_cuboid(Ray *ray, Cuboid *cuboid, Intersection *intersection)
@@ -158,6 +188,48 @@ bool intersect_cuboid(Ray *ray, Cuboid *cuboid, Intersection *intersection)
 	box.minimum = cuboid->origin - 0.5f * cuboid->extends;
 	box.maximum = cuboid->origin + 0.5f * cuboid->extends;
 	return intersect_box(ray, &box, intersection);
+}
+
+/**
+* Checks if a ray intersects a sphere.
+* \return true if the ray hits the sphere.
+*/
+bool intersect_sphere(Ray *ray, Sphere *sphere, Intersection *intersection)
+{
+	float num = sphere->origin.x - ray->origin.x;
+	float num2 = sphere->origin.y - ray->origin.y;
+	float num3 = sphere->origin.z - ray->origin.z;
+	float num4 = num * num + num2 * num2 + num3 * num3;
+	float num5 = sphere->radius * sphere->radius;
+	if (num4 <= num5)
+	{
+		if (intersection != nullptr)
+		{
+			intersection->distance = distance(sphere->origin, ray->origin);
+			intersection->normal = normalize(ray->origin - sphere->origin);
+			intersection->position = sphere->origin;
+		}
+		return true;
+	}
+	float num6 = num * ray->direction.x + num2 * ray->direction.y + num3 * ray->direction.z;
+	if (num6 < 0.0f)
+	{
+		return false;
+	}
+	float num7 = num4 - num6 * num6;
+	if (num7 > num5)
+	{
+		return false;
+	}
+	float num8 = sqrt(num5 - num7);
+
+	if(intersection != nullptr)
+	{
+		intersection->distance = (num6 - num8);
+		intersection->position = ray->origin + intersection->distance * ray->direction;
+		intersection->normal = normalize(intersection->position - sphere->origin);
+	}
+	return true;
 }
 
 #endif // _INTERSECT_H_
