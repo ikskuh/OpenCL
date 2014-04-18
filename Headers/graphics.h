@@ -13,8 +13,8 @@ typedef struct
 	float4 rgba;
 } Color;
 
-__const Color COLOR_RED = { 1.0f, 0.0f, 0.0f, 1.0f };
-__const Color COLOR_BLUE = { 0.0f, 0.0f, 1.0f, 1.0f };
+__constant Color COLOR_RED = { 1.0f, 0.0f, 0.0f, 1.0f };
+__constant Color COLOR_BLUE = { 0.0f, 0.0f, 1.0f, 1.0f };
 
 /**
  * Converts a color to 

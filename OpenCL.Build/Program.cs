@@ -119,7 +119,8 @@ namespace OpenCL.Build
 				if(!string.IsNullOrWhiteSpace(commandLine))
 					Console.WriteLine("Build Options: {0}", commandLine);
 				program.Build(commandLine, device);
-				Console.WriteLine("Compilation successful!");
+
+				Console.Write(program.GetBuildLog(device));
 
 				return 0;
 			}
@@ -134,8 +135,6 @@ namespace OpenCL.Build
 						Console.WriteLine("Failed to compile: {0}", ex.ErrorCode);
 						break;
 				}
-				
-
 				return 2;
 			}
 			finally
@@ -143,7 +142,6 @@ namespace OpenCL.Build
 				program.Dispose();
 				context.Dispose();
 			}
-
 		}
 
 		private static void PrintHelp()
